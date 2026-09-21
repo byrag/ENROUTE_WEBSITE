@@ -442,50 +442,7 @@
         </div>
 
 
-        <!-- SEARCH WIDGET -->
-        <div id="searchBox" class="absolute -bottom-8 left-4 right-4 z-30 overflow-hidden rounded-3xl border border-white bg-white/95 shadow-soft backdrop-blur sm:left-8 sm:right-8">
 
-          <div class="grid grid-cols-2 border-b border-slate-100">
-            <button id="rideTab" onclick="setMode('ride')" class="bg-enroute-50 px-4 py-3 text-left font-black text-enroute-700">
-              🚗 Find a Ride
-              <div class="pl-6 text-[10px] font-semibold text-slate-400">Travel together</div>
-            </button>
-
-            <button id="parcelTab" onclick="setMode('parcel')" class="px-4 py-3 text-left font-black text-slate-500">
-              📦 Send a Parcel
-              <div class="pl-6 text-[10px] font-semibold text-slate-400">Deliver on the move</div>
-            </button>
-          </div>
-
-          <div class="grid gap-2 p-3 sm:grid-cols-[1fr_1fr_.7fr_.65fr_auto]">
-
-            <div class="rounded-xl border border-slate-200 px-3 py-2.5">
-              <div class="text-[9px] font-black uppercase text-slate-400">From</div>
-              <input id="from" class="mt-0.5 w-full bg-transparent text-xs font-bold outline-none" placeholder="Pickup location">
-            </div>
-
-            <div class="rounded-xl border border-slate-200 px-3 py-2.5">
-              <div class="text-[9px] font-black uppercase text-slate-400">To</div>
-              <input id="to" class="mt-0.5 w-full bg-transparent text-xs font-bold outline-none" placeholder="Destination">
-            </div>
-
-            <div class="rounded-xl border border-slate-200 px-3 py-2.5">
-              <div class="text-[9px] font-black uppercase text-slate-400">Date</div>
-              <input id="date" type="date" class="mt-0.5 w-full bg-transparent text-xs font-bold outline-none">
-            </div>
-
-            <div class="rounded-xl border border-slate-200 px-3 py-2.5">
-              <div id="capacityLabel" class="text-[9px] font-black uppercase text-slate-400">Seats</div>
-              <select id="capacity" class="mt-0.5 w-full bg-transparent text-xs font-bold outline-none">
-                <option>1</option><option>2</option><option>3</option><option>4</option>
-              </select>
-            </div>
-
-            <button onclick="searchJourney()" class="rounded-xl bg-enroute-600 px-4 py-2.5 text-xs font-black text-white hover:bg-enroute-700">
-              Search →
-            </button>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -627,6 +584,82 @@
 
 
 <!-- ============================================================
+     RIDE / PARCEL SEARCH
+     Placed directly above Our Services
+============================================================ -->
+<section class="relative z-30 -mt-4 mb-0 bg-transparent px-5 lg:px-8">
+  <div class="mx-auto max-w-6xl">
+  <!-- RIDE / PARCEL SEARCH TABS -->
+  <div id="searchBox" class="relative z-30 w-full overflow-hidden rounded-3xl border border-white bg-white/95 shadow-soft backdrop-blur">
+
+          <div class="grid grid-cols-2 border-b border-slate-100">
+            <button id="rideTab" onclick="setMode('ride')" class="bg-enroute-50 px-4 py-3 text-left font-black text-enroute-700">
+              🚗 Find a Ride
+              <div class="pl-6 text-[10px] font-semibold text-slate-400">Travel together</div>
+            </button>
+
+            <button id="parcelTab" onclick="setMode('parcel')" class="px-4 py-3 text-left font-black text-slate-500">
+              📦 Send a Parcel
+              <div class="pl-6 text-[10px] font-semibold text-slate-400">Deliver on the move</div>
+            </button>
+          </div>
+
+          <div class="grid gap-2 p-3 sm:grid-cols-[1fr_1fr_.7fr_.65fr_auto]">
+
+            <div class="rounded-xl border border-slate-200 px-3 py-2.5">
+              <div class="text-[9px] font-black uppercase text-slate-400">From</div>
+              <input id="from" class="mt-0.5 w-full bg-transparent text-xs font-bold outline-none" placeholder="Pickup location">
+            </div>
+
+            <div class="rounded-xl border border-slate-200 px-3 py-2.5">
+              <div class="text-[9px] font-black uppercase text-slate-400">To</div>
+              <input id="to" class="mt-0.5 w-full bg-transparent text-xs font-bold outline-none" placeholder="Destination">
+            </div>
+
+            <div class="rounded-xl border border-slate-200 px-3 py-2.5">
+              <div class="text-[9px] font-black uppercase text-slate-400">Date</div>
+              <input id="date" type="date" class="mt-0.5 w-full bg-transparent text-xs font-bold outline-none">
+            </div>
+
+            <div class="rounded-xl border border-slate-200 px-3 py-2.5">
+              <div id="capacityLabel" class="text-[9px] font-black uppercase text-slate-400">Seats</div>
+              <select id="capacity" class="mt-0.5 w-full bg-transparent text-xs font-bold outline-none">
+                <option>1</option><option>2</option><option>3</option><option>4</option>
+              </select>
+            </div>
+
+            <button onclick="searchJourney()" class="rounded-xl bg-enroute-600 px-4 py-2.5 text-xs font-black text-white hover:bg-enroute-700">
+              Search →
+            </button>
+          </div>
+
+          <!-- HTML5 / Web API controls -->
+          <div class="flex flex-wrap items-center gap-2 border-t border-slate-100 px-3 py-3">
+            <button onclick="useMyLocation()" class="rounded-xl border border-enroute-200 bg-enroute-50 px-3 py-2 text-[11px] font-black text-enroute-800 hover:bg-enroute-100">
+              📍 Use My Location
+            </button>
+            <button onclick="saveJourney()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-[11px] font-black text-slate-700 hover:bg-slate-50">
+              💾 Save Search
+            </button>
+            <button onclick="showRecentSearches()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-[11px] font-black text-slate-700 hover:bg-slate-50">
+              🕘 Recent Searches
+            </button>
+            <button onclick="shareJourney()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-[11px] font-black text-slate-700 hover:bg-slate-50">
+              📤 Share
+            </button>
+            <button onclick="copyJourney()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-[11px] font-black text-slate-700 hover:bg-slate-50">
+              📋 Copy
+            </button>
+            <button onclick="enableNotifications()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-[11px] font-black text-slate-700 hover:bg-slate-50">
+              🔔 Notifications
+            </button>
+          </div>
+        </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
      SERVICES - ONLY TWO CARDS
 ============================================================ -->
 <section id="services" class="bg-enroute-50/70 backdrop-blur-sm py-16 lg:py-20">
@@ -709,6 +742,111 @@
 </section>
 
 
+
+<!-- ============================================================
+     PARCEL DELIVERY API DEMONSTRATION
+============================================================= -->
+<section id="parcelApiDemo" class="bg-white/80 backdrop-blur-sm py-16 lg:py-20">
+  <div class="mx-auto max-w-6xl px-5 lg:px-8">
+    <div class="reveal mx-auto max-w-3xl text-center">
+      <p class="text-xs font-black uppercase tracking-[.25em] text-amber-600">Parcel Delivery APIs</p>
+      <h2 class="mt-2 text-3xl font-black sm:text-4xl">Try the Parcel Delivery Features</h2>
+      <p class="mt-3 text-slate-600">
+        Demonstrations of browser APIs used by Enroute for parcel pickup, tracking,
+        sharing, notifications and offline delivery history.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+
+      <!-- File API -->
+      <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div class="text-3xl">📄</div>
+        <h3 class="mt-3 font-black">Parcel Document</h3>
+        <p class="mt-1 text-xs leading-5 text-slate-500">
+          File API: select a parcel image/invoice and preview it before delivery.
+        </p>
+        <input id="parcelFile" type="file" accept="image/*,.pdf"
+          class="mt-4 w-full rounded-xl border border-slate-200 p-2 text-xs">
+        <div id="filePreview" class="mt-3 hidden overflow-hidden rounded-xl border bg-slate-50 p-2 text-xs"></div>
+      </div>
+
+      <!-- Drag & Drop API -->
+      <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div class="text-3xl">📦</div>
+        <h3 class="mt-3 font-black">Drag & Drop Parcel</h3>
+        <p class="mt-1 text-xs leading-5 text-slate-500">
+          Drag a parcel image into the box to attach it to the delivery.
+        </p>
+        <div id="dropZone"
+          class="mt-4 grid min-h-28 place-items-center rounded-2xl border-2 border-dashed border-amber-300 bg-amber-50 p-4 text-center text-xs font-bold text-amber-800">
+          Drop parcel image here
+        </div>
+        <div id="dropStatus" class="mt-2 text-center text-xs text-slate-500"></div>
+      </div>
+
+      <!-- IndexedDB API -->
+      <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div class="text-3xl">🗃️</div>
+        <h3 class="mt-3 font-black">Offline Parcel History</h3>
+        <p class="mt-1 text-xs leading-5 text-slate-500">
+          IndexedDB: save parcel tracking records locally in the browser.
+        </p>
+        <input id="trackingId" class="mt-4 w-full rounded-xl border border-slate-200 px-3 py-2 text-xs"
+          placeholder="Tracking ID e.g. ENR12345">
+        <button onclick="saveParcelRecord()"
+          class="mt-2 w-full rounded-xl bg-enroute-600 px-3 py-2 text-xs font-black text-white">
+          Save Tracking Record
+        </button>
+        <button onclick="showParcelHistory()"
+          class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-2 text-xs font-black">
+          View Saved Parcels
+        </button>
+      </div>
+
+      <!-- Notifications + Share + Clipboard -->
+      <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div class="text-3xl">🚚</div>
+        <h3 class="mt-3 font-black">Track & Share</h3>
+        <p class="mt-1 text-xs leading-5 text-slate-500">
+          Notifications, Web Share and Clipboard APIs for parcel updates.
+        </p>
+        <div class="mt-4 rounded-xl bg-slate-50 p-3">
+          <div class="text-[9px] font-black uppercase text-slate-400">Status</div>
+          <div id="parcelStatus" class="mt-1 text-sm font-black">Ready for Pickup</div>
+        </div>
+        <button onclick="updateParcelStatus()"
+          class="mt-2 w-full rounded-xl bg-enroute-600 px-3 py-2 text-xs font-black text-white">
+          Simulate Status Update
+        </button>
+        <button onclick="shareParcel()"
+          class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-2 text-xs font-black">
+          📤 Share Tracking
+        </button>
+        <button onclick="copyTrackingId()"
+          class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-2 text-xs font-black">
+          📋 Copy Tracking ID
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-6 rounded-3xl bg-enroute-900 p-6 text-white shadow-xl">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="text-xs font-black uppercase tracking-[.2em] text-enroute-300">Parcel Tracking</p>
+          <h3 class="mt-1 text-xl font-black">ENR-PARCEL-2026</h3>
+          <p class="mt-1 text-sm text-enroute-100">
+            Pickup → In Transit → Near Destination → Delivered
+          </p>
+        </div>
+        <div id="parcelProgress" class="rounded-full bg-white/10 px-5 py-3 text-sm font-black">
+          1 / 4 · Ready for Pickup
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================================================
      SMALL CTA
 ============================================================ -->
@@ -786,7 +924,176 @@ function setMode(next){
 }
 
 
-/* ================= DEMO SEARCH ================= */
+/* ================= HTML5 / WEB APIs =================
+   1. Geolocation API   - gets the user's current pickup location
+   2. Web Storage API   - saves and retrieves recent searches
+   3. Notifications API - alerts the user about a completed search
+   4. Web Share API     - shares journey details using the device share sheet
+   5. Clipboard API     - copies journey details to the system clipboard
+======================================================== */
+
+/* 1) GEOLOCATION API */
+function useMyLocation(){
+  if(!("geolocation" in navigator)){
+    toast("Geolocation is not supported by this browser.");
+    return;
+  }
+
+  toast("Requesting your location...");
+  navigator.geolocation.getCurrentPosition(
+    position=>{
+      const {latitude, longitude, accuracy}=position.coords;
+      const coordinates=`${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
+      document.getElementById("from").value=`My location (${coordinates})`;
+      sessionStorage.setItem("enroute_last_location", coordinates);
+      toast(`Location detected (±${Math.round(accuracy)}m).`);
+    },
+    error=>{
+      const messages={
+        1:"Location permission was denied.",
+        2:"Your location could not be determined.",
+        3:"Location request timed out."
+      };
+      toast(messages[error.code] || "Unable to get your location.");
+    },
+    {enableHighAccuracy:true, timeout:10000, maximumAge:60000}
+  );
+}
+
+/* Build a reusable journey object */
+function getJourneyData(){
+  return {
+    mode,
+    from:document.getElementById("from").value.trim(),
+    to:document.getElementById("to").value.trim(),
+    date:document.getElementById("date").value,
+    capacity:document.getElementById("capacity").value
+  };
+}
+
+/* 2) WEB STORAGE API - localStorage */
+function saveJourney(){
+  const journey=getJourneyData();
+
+  if(!journey.from || !journey.to){
+    toast("Enter pickup and destination before saving.");
+    return;
+  }
+
+  const key="enroute_recent_searches";
+  const existing=JSON.parse(localStorage.getItem(key) || "[]");
+  existing.unshift({...journey, savedAt:new Date().toLocaleString()});
+  localStorage.setItem(key, JSON.stringify(existing.slice(0,5)));
+
+  toast("Journey saved in your browser.");
+}
+
+function showRecentSearches(){
+  const searches=JSON.parse(localStorage.getItem("enroute_recent_searches") || "[]");
+
+  if(!searches.length){
+    toast("No saved searches yet.");
+    return;
+  }
+
+  const latest=searches[0];
+  document.getElementById("from").value=latest.from;
+  document.getElementById("to").value=latest.to;
+  document.getElementById("date").value=latest.date;
+  document.getElementById("capacity").value=latest.capacity;
+
+  toast(`Loaded: ${latest.from} → ${latest.to}`);
+}
+
+/* 3) NOTIFICATIONS API */
+async function enableNotifications(){
+  if(!("Notification" in window)){
+    toast("Notifications are not supported by this browser.");
+    return;
+  }
+
+  if(!window.isSecureContext){
+    toast("Notifications require HTTPS or localhost.");
+    return;
+  }
+
+  const permission=await Notification.requestPermission();
+
+  if(permission==="granted"){
+    new Notification("Enroute Notifications Enabled",{
+      body:"You can now receive Enroute journey updates."
+    });
+    toast("Notifications enabled.");
+  }else{
+    toast("Notification permission was not granted.");
+  }
+}
+
+function notifyJourney(message){
+  if("Notification" in window && Notification.permission==="granted"){
+    new Notification("Enroute Journey Update",{body:message});
+  }
+}
+
+/* 4) WEB SHARE API */
+async function shareJourney(){
+  const journey=getJourneyData();
+
+  if(!journey.from || !journey.to){
+    toast("Enter pickup and destination first.");
+    return;
+  }
+
+  const text=`Enroute ${journey.mode==="ride" ? "Ride" : "Parcel"}\n${journey.from} → ${journey.to}\nDate: ${journey.date}`;
+
+  if(navigator.share){
+    try{
+      await navigator.share({
+        title:"Enroute Journey",
+        text,
+        url:window.location.href
+      });
+      toast("Journey shared successfully.");
+    }catch(error){
+      if(error.name!=="AbortError") toast("Sharing was cancelled or unavailable.");
+    }
+  }else{
+    await copyText(text);
+    toast("Web Share is unavailable. Details copied instead.");
+  }
+}
+
+/* 5) CLIPBOARD API */
+async function copyText(text){
+  if(navigator.clipboard && window.isSecureContext){
+    await navigator.clipboard.writeText(text);
+    return true;
+  }
+  return false;
+}
+
+async function copyJourney(){
+  const journey=getJourneyData();
+
+  if(!journey.from || !journey.to){
+    toast("Enter pickup and destination first.");
+    return;
+  }
+
+  const text=`Enroute ${journey.mode==="ride" ? "Ride" : "Parcel"}: ${journey.from} → ${journey.to} | ${journey.date}`;
+
+  try{
+    if(await copyText(text)){
+      toast("Journey details copied to clipboard.");
+    }else{
+      toast("Clipboard access requires HTTPS or localhost.");
+    }
+  }catch(error){
+    toast("Could not copy journey details.");
+  }
+} 
+
+/* Enhanced search: storage + notification */
 function searchJourney(){
   const from=document.getElementById("from").value.trim();
   const to=document.getElementById("to").value.trim();
@@ -796,11 +1103,22 @@ function searchJourney(){
     return;
   }
 
-  if(mode==="ride"){
-    toast(`Finding rides from ${from} to ${to}...`);
-  }else{
-    toast(`Finding parcel drivers from ${from} to ${to}...`);
-  }
+  const journey=getJourneyData();
+
+  /* Save the latest search automatically */
+  const key="enroute_recent_searches";
+  const existing=JSON.parse(localStorage.getItem(key) || "[]");
+  localStorage.setItem(
+    key,
+    JSON.stringify([{...journey, savedAt:new Date().toLocaleString()}, ...existing].slice(0,5))
+  );
+
+  const message=mode==="ride"
+    ? `Finding rides from ${from} to ${to}...`
+    : `Finding parcel drivers from ${from} to ${to}...`;
+
+  toast(message);
+  notifyJourney(`Search started: ${from} → ${to}`);
 }
 
 
@@ -874,6 +1192,275 @@ const counterObserver=new IntersectionObserver(entries=>{
 },{threshold:.5});
 
 document.querySelectorAll(".counter").forEach(el=>counterObserver.observe(el));
+
+/* ============================================================
+   PARCEL DELIVERY WEB API DEMONSTRATIONS
+============================================================= */
+
+/* ---------- File API ---------- */
+const parcelFile = document.getElementById("parcelFile");
+const filePreview = document.getElementById("filePreview");
+
+parcelFile?.addEventListener("change", () => {
+  const file = parcelFile.files[0];
+  if (!file) return;
+
+  filePreview.classList.remove("hidden");
+
+  if (file.type.startsWith("image/")) {
+    const reader = new FileReader();
+    reader.onload = e => {
+      filePreview.innerHTML =
+        `<img src="${e.target.result}" alt="Parcel preview" class="mx-auto max-h-32 rounded-lg">`;
+    };
+    reader.readAsDataURL(file);
+  } else {
+    filePreview.textContent = `Attached: ${file.name} (${Math.round(file.size / 1024)} KB)`;
+  }
+
+  toast(`Parcel file attached: ${file.name}`);
+});
+
+
+/* ---------- Drag and Drop API ---------- */
+const dropZone = document.getElementById("dropZone");
+const dropStatus = document.getElementById("dropStatus");
+
+dropZone?.addEventListener("dragover", e => {
+  e.preventDefault();
+  dropZone.classList.add("ring-2", "ring-amber-400");
+});
+
+dropZone?.addEventListener("dragleave", () => {
+  dropZone.classList.remove("ring-2", "ring-amber-400");
+});
+
+dropZone?.addEventListener("drop", e => {
+  e.preventDefault();
+  dropZone.classList.remove("ring-2", "ring-amber-400");
+
+  const file = e.dataTransfer.files[0];
+
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    dropStatus.textContent = "Please drop a parcel image.";
+    return;
+  }
+
+  dropStatus.textContent = `✓ Attached: ${file.name}`;
+  toast("Parcel image attached using Drag & Drop API.");
+});
+
+
+/* ---------- IndexedDB API ---------- */
+let parcelDB;
+
+function openParcelDB() {
+  return new Promise((resolve, reject) => {
+    if (!("indexedDB" in window)) {
+      reject(new Error("IndexedDB is not supported."));
+      return;
+    }
+
+    const request = indexedDB.open("EnrouteParcelDB", 1);
+
+    request.onupgradeneeded = event => {
+      const db = event.target.result;
+      if (!db.objectStoreNames.contains("parcels")) {
+        db.createObjectStore("parcels", { keyPath: "trackingId" });
+      }
+    };
+
+    request.onsuccess = event => {
+      parcelDB = event.target.result;
+      resolve(parcelDB);
+    };
+
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function saveParcelRecord() {
+  const input = document.getElementById("trackingId");
+  const trackingId = input.value.trim() || `ENR${Date.now().toString().slice(-6)}`;
+
+  try {
+    const db = await openParcelDB();
+
+    const record = {
+      trackingId,
+      status: document.getElementById("parcelStatus")?.textContent || "Ready for Pickup",
+      savedAt: new Date().toLocaleString()
+    };
+
+    const tx = db.transaction("parcels", "readwrite");
+    tx.objectStore("parcels").put(record);
+
+    tx.oncomplete = () => {
+      input.value = trackingId;
+      toast(`Parcel ${trackingId} saved offline.`);
+    };
+  } catch (error) {
+    toast("IndexedDB is unavailable in this browser.");
+  }
+}
+
+async function showParcelHistory() {
+  try {
+    const db = await openParcelDB();
+    const tx = db.transaction("parcels", "readonly");
+    const request = tx.objectStore("parcels").getAll();
+
+    request.onsuccess = () => {
+      const records = request.result;
+
+      if (!records.length) {
+        toast("No saved parcel records yet.");
+        return;
+      }
+
+      const summary = records
+        .slice(-5)
+        .map(p => `${p.trackingId}: ${p.status}`)
+        .join(" | ");
+
+      toast(summary);
+    };
+  } catch (error) {
+    toast("Could not read parcel history.");
+  }
+}
+
+
+/* ---------- Notifications API ---------- */
+async function notifyParcelStatus(status) {
+  if (!("Notification" in window)) {
+    toast("Browser notifications are not supported.");
+    return;
+  }
+
+  if (Notification.permission === "default") {
+    await Notification.requestPermission();
+  }
+
+  if (Notification.permission === "granted") {
+    new Notification("Enroute Parcel Update", {
+      body: `Your parcel status is now: ${status}`
+    });
+  }
+}
+
+
+/* ---------- Parcel status simulation ---------- */
+const parcelStatuses = [
+  "Ready for Pickup",
+  "In Transit",
+  "Near Destination",
+  "Delivered"
+];
+
+let parcelStatusIndex = 0;
+
+function updateParcelStatus() {
+  parcelStatusIndex = (parcelStatusIndex + 1) % parcelStatuses.length;
+
+  const status = parcelStatuses[parcelStatusIndex];
+  const statusEl = document.getElementById("parcelStatus");
+  const progressEl = document.getElementById("parcelProgress");
+
+  if (statusEl) statusEl.textContent = status;
+  if (progressEl) {
+    progressEl.textContent =
+      `${parcelStatusIndex + 1} / ${parcelStatuses.length} · ${status}`;
+  }
+
+  toast(`Parcel status updated: ${status}`);
+  notifyParcelStatus(status);
+}
+
+
+/* ---------- Web Share API ---------- */
+async function shareParcel() {
+  const trackingId =
+    document.getElementById("trackingId")?.value.trim() || "ENR-PARCEL-2026";
+
+  const shareData = {
+    title: "Enroute Parcel Tracking",
+    text: `Track my Enroute parcel: ${trackingId}`
+  };
+
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+      toast("Parcel tracking shared.");
+    } catch (error) {
+      if (error.name !== "AbortError") toast("Sharing was cancelled or failed.");
+    }
+  } else {
+    await copyText(`Enroute Parcel Tracking: ${trackingId}`);
+    toast("Web Share is unavailable. Tracking details copied instead.");
+  }
+}
+
+
+/* ---------- Clipboard API ---------- */
+async function copyText(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    await navigator.clipboard.writeText(text);
+    return true;
+  }
+
+  const area = document.createElement("textarea");
+  area.value = text;
+  area.style.position = "fixed";
+  area.style.opacity = "0";
+  document.body.appendChild(area);
+  area.select();
+
+  const copied = document.execCommand("copy");
+  area.remove();
+
+  return copied;
+}
+
+async function copyTrackingId() {
+  const trackingId =
+    document.getElementById("trackingId")?.value.trim() || "ENR-PARCEL-2026";
+
+  try {
+    await copyText(trackingId);
+    toast(`Copied tracking ID: ${trackingId}`);
+  } catch {
+    toast("Clipboard access was blocked by the browser.");
+  }
+}
+
+
+/* ---------- Geolocation for parcel pickup ---------- */
+async function useParcelLocation() {
+  if (!navigator.geolocation) {
+    toast("Geolocation is not supported by this browser.");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    position => {
+      const lat = position.coords.latitude.toFixed(5);
+      const lng = position.coords.longitude.toFixed(5);
+
+      const fromInput = document.getElementById("from");
+      if (fromInput) {
+        fromInput.value = `My Location (${lat}, ${lng})`;
+      }
+
+      toast("Current pickup location detected.");
+    },
+    () => toast("Location permission was denied or unavailable."),
+    { enableHighAccuracy: true, timeout: 10000 }
+  );
+}
+
 </script>
 
 </body>
